@@ -32,7 +32,7 @@ PROMPT_USER_COLOR=$fg[magenta]
 
 
 PROMPT='$(build_prompt)'
-RPROMPT='%{$VENV_COLOR%}$(virtualenv_info)$(prompt_directory) %{$reset_color%}%T '
+# RPROMPT='%{$VENV_COLOR%}$(virtualenv_info)$(prompt_directory) %{$reset_color%}%T '
 
 function virtualenv_info {
     [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
@@ -41,9 +41,9 @@ function virtualenv_info {
 
 function prompt_exit_status() {
   if [ $? -eq 0 ]; then
-    echo "%{$fg_bold[green]%}❯%{$reset_color%} " #❯
+    echo "%{$VENV_COLOR%}$(virtualenv_info) %{$fg_bold[green]%}❯%{$reset_color%} " #❯
   else
-    echo "%{$FG[133]%}❯%{$reset_color%} " #❯
+    echo "%{$VENV_COLOR%}$(virtualenv_info) %{$FG[133]%}❯%{$reset_color%} " #❯
   fi
 }
 
