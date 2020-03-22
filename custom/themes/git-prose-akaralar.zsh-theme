@@ -32,7 +32,8 @@ PROMPT_USER_COLOR=$fg[magenta]
 
 
 PROMPT='$(build_prompt)'
-RPROMPT='%{$VENV_COLOR%}$(virtualenv_info)'
+RPROMPT='%{$VENV_COLOR%}$(virtualenv_info)$(prompt_directory) %{$reset_color%}%T '
+
 
 function virtualenv_info {
     [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
