@@ -27,8 +27,7 @@ function prompt_directory() {
 }
 
 PROMPT=' %{$VENV_COLOR%}$(virtualenv_info)$(prompt_directory)%{$reset_color%}$(git_prompt_info)%{$GIT_DIRTY_COLOR%}$(git_prompt_status) %{$reset_color%}$(prompt_exit_status) '
-
-RPROMPT='[%n]%t'
+RPROMPT='%{$VENV_COLOR%}$(prompt_directory) %{$reset_color%}%T '
 
 #RPROMPT='%{$VENV_COLOR%}$(virtualenv_info)'
 #if you want battery status in the right prompt, append line below
