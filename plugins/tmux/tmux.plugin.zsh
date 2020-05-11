@@ -76,7 +76,7 @@ function _zsh_tmux_plugin_run() {
     elif [[ -e "$ZSH_TMUX_CONFIG" ]]; then
       tmux_cmd+=(-f "$ZSH_TMUX_CONFIG")
     fi
-    $tmux_cmd new-session
+    $tmux_cmd new-session -s letgo
   fi
 
   if [[ "$ZSH_TMUX_AUTOQUIT" == "true" ]]; then
