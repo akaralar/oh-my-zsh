@@ -79,9 +79,9 @@ function _zsh_tmux_plugin_run() {
 
     # Resurrect last session when tmux first starts
     # adapted from https://github.com/tmux-plugins/tmux-resurrect/issues/139#issuecomment-569475047
-    $tmux_cmd new -d -s delete-me && \
-    $tmux_cmd run-shell $TMUX_DIR/plugins/tmux-resurrect/scripts/restore.sh && \
-    $tmux_cmd kill-session -t delete-me && \
+    $tmux_cmd new -d -s delete-me
+    $tmux_cmd run-shell "${TMUX_PLUGIN_MANAGER_PATH}/tmux-resurrect/scripts/restore.sh"
+    $tmux_cmd kill-session -t delete-me
     $tmux_cmd attach
   fi
 
