@@ -76,7 +76,13 @@ function _zsh_tmux_plugin_run() {
     elif [[ -e "$ZSH_TMUX_CONFIG" ]]; then
       tmux_cmd+=(-f "$ZSH_TMUX_CONFIG")
     fi
-    $tmux_cmd new-session -s letgo
+
+    # Resurrect last session when tmux first starts
+    # adapted from https://github.com/tmux-plugins/tmux-resurrect/issues/139#issuecomment-569475047
+    $tmux_cmd new -d -s delete-me && \
+    $tmux_cmd run-shell $TMUX_DIR/plugins/tmux-resurrect/scripts/restore.sh && \
+    $tmux_cmd kill-session -t delete-me && \
+    $tmux_cmd attach
   fi
 
   if [[ "$ZSH_TMUX_AUTOQUIT" == "true" ]]; then
