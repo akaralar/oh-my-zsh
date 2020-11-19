@@ -30,15 +30,12 @@ VENV_COLOR=$fg[yellow]
 # use these colors if iterm-colors is installed
 PROMPT_USER_COLOR=$fg[magenta]
 
-
 PROMPT='$(build_prompt)'
 RPROMPT='%{$VENV_COLOR%}$(virtualenv_info)$(prompt_directory) %{$reset_color%}%T '
-
 
 function virtualenv_info {
     [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
 }
-
 
 function prompt_exit_status() {
   if [ $? -eq 0 ]; then
